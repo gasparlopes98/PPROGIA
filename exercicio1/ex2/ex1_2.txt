@@ -1,0 +1,31 @@
+2)
+a) Utilizando o predicado progenitor(X,Y) 
+(ou seja, X é progenitor de Y), represente em Prolog todos 
+os progenitores da família Pinheiro.
+
+progenitor(X,Y).
+
+b) Represente em Prolog as relações: sexo (masculino 
+ou feminino), irmã, irmão, descendente, mãe, pai, avô,
+ tio, primo.
+
+c)
+
+i) O João é filho do José?
+filho(joao,jose).
+
+ii) Quem são os filhos da Maria?
+filho(X,ana);filha(Y,ana).
+
+iii) Quem são os primos do Mário?
+primo(mario,X);prima(mario,Y).
+
+iv) Quantos sobrinhos/sobrinhas com um Tio existem na família
+Pinheiro?
+tio(X,Y);tia(Z,W).
+
+v) Quem são os ascendentes do Carlos?
+progenitor(X,carlos).
+
+v) A Helena tem irmãos? E irmãs?
+irmao(X,helena);irma(Y,helena).
