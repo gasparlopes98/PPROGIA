@@ -34,8 +34,13 @@ mdc(X,Y,R):-
     sub(MAIOR,MENOR,R1),
     mdc(R1,MENOR,R).
  
-mmc(X,Y,R,N):-
+mmc(X,Y,MAIOR):- 
     maior(X,Y,MAIOR),
     menor(X,Y,MENOR),
-    N is N+1,
-    mul(MAIOR,N,M),
+    MAIOR mod MENOR=:=0.
+mmc(X,Y,R):-
+    maior(X,Y,MAIOR),
+    menor(X,Y,MENOR),
+    MAIOR mod MENOR > 0,
+    MAIOR1 is MAIOR+MAIOR,
+    mmc(MAIOR1,MENOR,R).
