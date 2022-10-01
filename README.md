@@ -1,8 +1,3 @@
-# PPROGIA
+--- Mestrado em Engenharia de Inteligência Artificial ---
 
-# Na consola (WSL) -> ir para localização do script
-# Verificar se Prolog está selecionado
-
-# Exemplo:
-# - [script].
-# - weather(X, hot).
+Paradigmas de Programação em Inteligência Artificial - 1º Semestre 2022/2023
