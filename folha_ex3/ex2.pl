@@ -1,0 +1,19 @@
+liga(a,b).
+liga(a,c).
+liga(a,d).
+liga(b,e).
+liga(b,f).
+liga(c,g).
+liga(c,h).
+liga(d,i).
+liga(d,j).
+liga(f,k).
+liga(f,l).
+liga(e,k).
+liga(j,l).
+liga(X,Y):-liga(Y,X),!.
+
+caminho(D,D,[D]):-!.
+caminho(O,D,[O|R]):-
+    liga(O,C),
+    caminho(C,D,R),!.
