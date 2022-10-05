@@ -11,9 +11,14 @@ liga(f,k).
 liga(f,l).
 liga(e,k).
 liga(j,l).
-liga(X,Y):-liga(Y,X),!.
+liga(X,Y):-liga(Y,X).
 
-caminho(D,D,[D]):-!.
+caminho(D,D,[D]).
 caminho(O,D,[O|R]):-
     liga(O,C),
-    caminho(C,D,R),!.
+    not(memberchk(C,R)),
+    caminho(C,D,R).
+caminho(O,D,[O|R]):-
+    retract(liga(O,C)),
+    liga(O,C),
+    caminho(C,D,R).
