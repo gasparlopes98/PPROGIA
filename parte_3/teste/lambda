@@ -1,0 +1,19 @@
+# Exercicios Fatorial com lambda
+def fact(n):
+    if n<2:
+        return 1
+    else:
+        return lambda n: n*fact(n-1)
+    
+
+def fac1(n,total):
+    if n== 0:
+        return total
+    else:
+        return fac1(n-1,total*n)
+    
+x= lambda n,total: total if n==0 else x(n-1,total*n)
+    
+print(fact(3)(2))
+print(fac1(5,1))
+print(x(5,1))
