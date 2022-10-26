@@ -3,7 +3,7 @@ import string
 
 
 def macaco_sarilhos(a,b):
-    return  (True if (a != "a_sorri" or b != "b_sorri") else False)
+    return  (True if (a == b) else False)
 
 #2)
 def falta_caractere(string,num):
