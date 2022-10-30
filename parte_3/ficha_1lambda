@@ -43,35 +43,41 @@ def flat_list_FC(lista):
     return flat
 
 #6)
-def query_notas(d,n=4):
-    lista_nomes=[]
-    for person in d:
-        if d[person]==n:
-            lista_nomes.append(person)
-    return lista_nomes
-
-def query_notas_lambda(d,n):
-    lista_nomes=[]
-    for person in d:
-        if d[person]==n:
-            lista_nomes.append(person)
-    return lambda x: 
+def query_notas_lambda(d,n,nl):
+    lk= inverte(list(d.keys()))
+    lv= inverte(list(d.values()))
+    if(lk==[]):
+        return nl
+    elif(lv[0]==n):
+        nl.append(lk[0])
+        d.popitem()
+        return query_notas_lambda(d,n,nl)
+    else:
+        d.popitem()
+        return query_notas_lambda(d,n,nl)
 
 #7.1)
-def format_txt(lista):
-    nova_lista=[]
-    for elemento in lista:
-        elemento=elemento.replace("_"," ")
-        elemento=elemento.title()
-        nova_lista.append(elemento)
-    return nova_lista   
+def format_txt(i,nova_lista,lista):
+    if i == len(lista):
+        return nova_lista
+    else:
+        nova_lista.append(lista[i].replace("_"," ").title())
+        return format_txt(i+1,nova_lista,lista)
 
 #7.2)
-def nice_print(lista):
-    for sublista in lista:
-        print(sublista[0].ljust(20) + str(sublista[1]).ljust(10)+ str(sublista[2]))
+def nice_print_lambda(i,lista):
+    if i == len(lista):
+        return print(' '.join(map(str,lista)))
+    else:
+        lista[i]=lista[i][0].ljust(20) + str(lista[i][1]).ljust(10)+ str(lista[i][2]) + "\n"
+        return nice_print_lambda(i+1,lista)
     
-a, b = "sorri", "sorri"
+#np = lambda nl,lista,i: np(nl.join(map(str,lista[i][0].ljust(20) + str(lista[i][1]).ljust(10)+ str(lista[i][2])+"\n")),lista,i+1) if i< len(lista) else print(nl)
+#np = lambda i,lista: np(i+1,lista[i]=lista[i][0].ljust(20) + str(lista[i][1]).ljust(10)+ str(lista[i][2])+"\n") if i< len(lista) else print(' '.join(map(str,lista)))
+
+#np("",base_dados,0)
+#np(0,base_dados)
+
 lista_elementos=[1,7,22,7,'hello',5,7,13]
 lista_de_lista = ['lamp_hall_1', 
                   'lamp_hall_2', 
@@ -85,12 +91,13 @@ dicionario= {'João':3, 'Diogo':4, 'Ana':4, 'Catarina':4,
 
 base_dados= [['nome_de_utilizador', 'idade', 'peso'],['Rui',18,75], ['Pedro',28,82],['Mafalda',33,53]]
 
-#print(macaco_sarilhos(a)(b))
+#print(macaco_sarilhos("sorri")("sorri"))
 #print(falta_caractere("Hello")(2))
 #print(conta_7(lista_elementos))
 #print(inverte(lista_elementos))
 #print(flat_list(lista_de_lista))
-#print(query_notas(dicionario,4))
-#print(format_txt(base_dados[0]))
-#base_dados[0]=format_txt(base_dados[0])
-#nice_print(base_dados)
+print(query_notas_lambda(dicionario,4,[]))
+#print(format_txt(0,[],base_dados[0]))
+#base_dados[0]=format_txt(0,[],base_dados[0])
+#nice_print_lambda(0,base_dados)
+
