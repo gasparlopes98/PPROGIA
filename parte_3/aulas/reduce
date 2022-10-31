@@ -1,0 +1,30 @@
+from functools import reduce
+from math import sqrt
+
+def maior(lista):
+    return reduce(lambda x,y: y if x<y else x,lista)
+
+def fact(n):
+    return reduce(lambda x,y: x*y,range(1,n+1))
+
+def negativos(lista):
+    return list(filter(lambda x: x<0, lista))
+    
+def perfeito(lista):
+    return list(filter(lambda x: sqrt(x)%2==0 ,lista))
+
+#maior numero de uma lista
+lista=[1,4,4,6,8]
+print(maior(lista))
+
+#factorial com reduce
+n=3
+print(fact(n))
+
+#filter numeros <0
+listab=range(-8,9)
+print(negativos(listab))
+
+#quadrado perfeito
+listac=[2,6,7,64,4]
+print(perfeito(listac))

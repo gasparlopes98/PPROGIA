@@ -22,25 +22,15 @@ def inverte(list):
     return (list[::-1])
             
 #5)
-def flat_list(lista):
-    flat = []
-    for elemento in lista:
-        if type(elemento) is list:
-            for item in elemento:
-                flat.append(item)
-        else:
-            flat.append(elemento)
-    return flat
-
-def flat_list_FC(lista):
-    flat = []
-    for elemento in lista:
-        if type(elemento) is list:
-            for item in elemento:
-                flat.append(item)
-        else:
-            flat.append(elemento)
-    return flat
+def flat_list_FC(lista,i,flat):
+    if(i>=len(lista)):
+        return flat
+    if type(lista[i]) is list:
+        flat= flat_list_FC(lista[i],0,flat)
+        return flat_list_FC(lista,i+1,flat)
+    else:
+        flat.append(lista[i])
+        return flat_list_FC(lista,i+1,flat)
 
 #6)
 def query_notas_lambda(d,n,nl):
@@ -95,7 +85,7 @@ base_dados= [['nome_de_utilizador', 'idade', 'peso'],['Rui',18,75], ['Pedro',28,
 #print(falta_caractere("Hello")(2))
 #print(conta_7(lista_elementos))
 #print(inverte(lista_elementos))
-#print(flat_list(lista_de_lista))
+#print(flat_list_FC(lista_de_lista,0,[]))
 print(query_notas_lambda(dicionario,4,[]))
 #print(format_txt(0,[],base_dados[0]))
 #base_dados[0]=format_txt(0,[],base_dados[0])
