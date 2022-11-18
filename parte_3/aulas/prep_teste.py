@@ -34,6 +34,14 @@ def naturais(n):
 mapping={'a':1,'e':2,'i':3,'o':4,'u':5,'A':11,'E':22,'I':33,'O':44,'U':55}
 def sub(frase):
     return "".join(map(lambda x: str(mapping[x]) if x in mapping else str(x),frase))
+
+primo = lambda x: len([n for n in range(2,x) if x%n==0])==0
+def func_impar(lista):
+    return list(map(lambda x: str(x)+'-primo',filter(lambda x: primo(x),lista)))
+
+def cifra(string):
+    return "&".join(map(lambda x: str(alfabeto[alfabeto.index(x)+2]) if alfabeto.index(x)<len(alfabeto)-2 else str(alfabeto[alfabeto.index(x)-len(alfabeto)+2]),string))
+
 #print(retorna3(data,"Matematica",3))
 # print(impar([1, 2, 3, 4, 25, 32]))
 # print(code('benfica'))
@@ -41,4 +49,6 @@ def sub(frase):
 # print(red_pares([2,1,7,1,5,7,9,6]))
 # print(inverso_R(['Ricardo', 'Helder', 'Fernandes', 'João', 'Claudia', 'Ana', 'Ines']))
 # print(naturais(7))
-print(sub("Importante encontrar o erro!"))
+# print(sub("Importante encontrar o erro!"))
+# print(func_impar([1, 2, 3, 4, 7, 25, 32]))
+print(cifra("XYZ"))
